@@ -39,7 +39,7 @@ python manage.py test catalog --verbosity=2
 Скрипты работают только с локальным адресом приложения.
 
 ```powershell
-python security_scripts/check_idor.py --username alex_test --password "ВАШ_ПАРОЛЬ" --entry-id 2
+python security_scripts/check_idor.py --username USERNAME_ВАШЕГО_ПОЛЬЗОВАТЕЛЯ --password "ПАРОЛЬ_ПОЛЬЗОВАТЕЛЯ" --entry-id ID_ЗАПИСИ_ДРУГОГО_ПОЛЬЗОВАТЕЛЯ
 python security_scripts/check_xss.py
 ```
 
@@ -61,5 +61,3 @@ git apply patches/fix_xss.diff
 Copy-Item patches/tests_after_patch.py catalog/tests.py
 python manage.py test catalog --verbosity=2
 ```
-
-Используйте только локально, с фиктивными аккаунтами и данными.
