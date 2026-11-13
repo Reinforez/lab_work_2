@@ -15,7 +15,7 @@ py -m venv .venv
 python -m pip install -r requirements.txt
 python manage.py migrate
 python manage.py createsuperuser
-python manage.py runserver 127.0.0.1:8000
+python manage.py runserver
 ```
 
 Откройте `http://127.0.0.1:8000/admin/`. Создайте два обычных тестовых аккаунта и две записи `FoodEntry`, назначив каждой свой `owner`. Для IDOR войдите как первый пользователь и укажите ID записи второго.
