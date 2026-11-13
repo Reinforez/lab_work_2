@@ -1,0 +1,12 @@
+--- a/catalog/views.py
++++ b/catalog/views.py
+@@ -50,7 +50,7 @@
+ def idor_insecure_demo(request, entry_id):
+     _require_local_debug(request)
+     # Намеренно небезопасно для учебного сравнения: владелец не проверяется.
+-    entry = get_object_or_404(FoodEntry, pk=entry_id)
+-    return render(request, "catalog/lab_record.html", {"entry": entry, "mode": "insecure"})
++    entry = get_object_or_404(FoodEntry, pk=entry_id, owner=request.user)
++    return render(request, "catalog/lab_record.html", {"entry": entry, "mode": "secure"})
+ 
+ 

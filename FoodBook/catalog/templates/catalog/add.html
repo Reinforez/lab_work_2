@@ -1,0 +1,15 @@
+{% extends "catalog/base.html" %}
+{% block title %}Новая запись — FoodBook{% endblock %}
+{% block content %}
+<section class="hero">
+    <p class="eyebrow">НОВАЯ ЗАПИСЬ</p>
+    <h1>Добавить любимое блюдо</h1>
+    <p class="muted">Запись будет сохранена в вашем аккаунте.</p>
+</section>
+<form method="post" class="form-card">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Сохранить запись</button>
+    <a href="{% url 'home' %}">Отмена</a>
+</form>
+{% endblock %}

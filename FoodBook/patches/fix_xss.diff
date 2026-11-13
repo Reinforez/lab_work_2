@@ -1,0 +1,11 @@
+--- a/catalog/templates/catalog/home.html
++++ b/catalog/templates/catalog/home.html
+@@ -12,7 +12,7 @@
+     {% if query %}<a href="{% url 'home' %}">Сбросить</a>{% endif %}
+ </form>
+ {% if query %}
+-    <p class="muted">Результаты поиска: {{ query|safe }}</p>
++    <p class="muted">Результаты поиска: {{ query }}</p>
+ {% endif %}
+ <div class="entries">
+     {% for entry in entries %}

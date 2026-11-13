@@ -1,0 +1,13 @@
+{% extends "catalog/base.html" %}
+{% block title %}Удаление записи — FoodBook{% endblock %}
+{% block content %}
+<h1>Удаление записи</h1>
+<div class="panel">
+    <p>Удалить запись <strong>{{ entry.name }}</strong> — {{ entry.favorite_dish }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button class="danger" type="submit">Да, удалить</button>
+        <a href="{% url 'home' %}">Отмена</a>
+    </form>
+</div>
+{% endblock %}

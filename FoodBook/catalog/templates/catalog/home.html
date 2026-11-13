@@ -1,0 +1,36 @@
+{% extends "catalog/base.html" %}
+{% block title %}Каталог — FoodBook{% endblock %}
+{% block content %}
+<section class="hero">
+    <p class="eyebrow">ЛИЧНЫЕ ВКУСЫ В ОДНОМ МЕСТЕ</p>
+    <h1>Каталог любимых блюд</h1>
+    <p class="muted">Просматривайте записи и находите их по имени.</p>
+</section>
+<form method="get" class="search">
+    <input type="search" name="q" value="{{ query }}" placeholder="Поиск по имени">
+    <button type="submit">Найти</button>
+    {% if query %}<a href="{% url 'home' %}">Сбросить</a>{% endif %}
+</form>
+{% if query %}
+    <p class="muted">Результаты поиска: {{ query|safe }}</p>
+{% endif %}
+<div class="entries">
+    {% for entry in entries %}
+        <article class="entry">
+            <div>
+                <h2>{{ entry.name }}</h2>
+                <p>Любимое блюдо: <strong>{{ entry.favorite_dish }}</strong></p>
+                <p class="muted small">Владелец: {{ entry.owner.username|default:"Не указан" }}</p>
+            </div>
+            {% if user.is_staff %}
+                <div class="actions">
+                    <a href="{% url 'edit_entry' entry.pk %}">Изменить</a>
+                    <a href="{% url 'delete_entry' entry.pk %}">Удалить</a>
+                </div>
+            {% endif %}
+        </article>
+    {% empty %}
+        <p class="empty">Записей пока нет.</p>
+    {% endfor %}
+</div>
+{% endblock %}

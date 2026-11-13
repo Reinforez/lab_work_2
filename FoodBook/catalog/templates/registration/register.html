@@ -1,0 +1,15 @@
+{% extends "catalog/base.html" %}
+{% block title %}Регистрация — FoodBook{% endblock %}
+{% block content %}
+<section class="hero">
+    <p class="eyebrow">НОВЫЙ АККАУНТ</p>
+    <h1>Регистрация</h1>
+    <p class="muted">Создайте аккаунт, чтобы добавлять свои записи.</p>
+</section>
+<form method="post" class="form-card">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Зарегистрироваться</button>
+    <a href="{% url 'login' %}">Уже есть аккаунт? Войти</a>
+</form>
+{% endblock %}
